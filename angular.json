@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "duyme2"
+  "defaultProject": "duyme2",
+  "cli": {
+    "analytics": "63c9e1de-fb62-45b8-b3c3-d3b6fc79cbe0"
+  }
 }
