@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Nhập thêm 1 sách mới</h1>
+    <form [formGroup]="bookForm">
+        <mat-form-field class="form-header">
+            <mat-label>Tên sách</mat-label>
+            <input matInput placeholder="" formControlName="bookName" require />
+        </mat-form-field>
+        <mat-form-field class="form-header">
+            <mat-label>Người phiên dịch</mat-label>
+            <input matInput placeholder="" formControlName="translator" require />
+        </mat-form-field>
+        <mat-form-field class="form-header">
+            <mat-label>Năm xuất bản</mat-label>
+            <input matInput placeholder="" formControlName="publishingYear" require />
+        </mat-form-field>
+        <br />
+        <button type="submit" class="btn btn-success" [disabled]="!bookForm.valid" (click)="saveGoToList()">Thêm và
+            trở về
+            danh sách</button>
+        &nbsp;
+        <button type="submit" class="btn btn-success" [disabled]="!bookForm.valid" (click)="save()">Thêm <span
+                *ngIf="bookId == 0">và nhập
+                mới</span></button>
+
+    </form>
+</div>

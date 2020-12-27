@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <button mat-raised-button color="primary" (click)="addBook()">
+        <mat-icon>add_box</mat-icon><span>Thêm</span>
+    </button>
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <nav class="navbar navbar-light bg-light float-right">
+                <div class="form-inline">
+                    <input class="form-control mr-sm-2" type="search"
+                        placeholder="Search by address" aria-label="Search" >
+                </div>
+                <nav class="navbar navbar-light bg-light float-right">
+                    <div class="form-inline">
+                        <button type="button" class="btn my-2 my-sm-0 border-radius1" data-toggle="modal"
+                            data-target="#exampleModalCenter">More filters
+                        </button>
+                    </div>
+                </nav>
+            </nav>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+
+    <br>
+    <h1 class="text-center">Homes List</h1>
+    <br>
+    <div class="row">
+        <div *ngFor="let book of books; index as idx">
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="" width="150px" height="200px" class="card-img-top border-radius" alt="...">
+                    <div class="card-body text-center">
+                        <p class="card-text">{{ book.bookName }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
