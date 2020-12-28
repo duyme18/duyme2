@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Author } from '../models/author';
-import { AuthService } from '../_services/auth.service';
 import { AuthorService } from '../_services/author.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'duyme2-author',
@@ -19,7 +19,7 @@ export class AuthorComponent implements OnInit {
   ngOnInit(): void {
     this.loadData();
   }
-  
+
   private loadData() {
     this.authorService.getAuthors().subscribe((data) => {
       this.authors = data;
@@ -27,4 +27,21 @@ export class AuthorComponent implements OnInit {
     });
   }
 
+  public addAuthor() {
+    this.router.navigate(['author-form']);
+  }
+
+  public deleteAuthor(authorId: any) {
+    this.authorService.deleteAuthor(authorId).subscribe((data) => {
+      this.loadData;
+    });
+  }
+
+  public editAuthor(authorId: any) {
+    this.router.navigate(['author-form', authorId]);
+  }
+
+  public orderBy(key: string, dir: any){
+    this.authors = _.orderBy(this.authors, key, dir);
+  }
 }

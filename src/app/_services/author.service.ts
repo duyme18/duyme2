@@ -9,24 +9,24 @@ import { Author } from '../models/author';
   providedIn: 'root'
 })
 export class AuthorService {
-  
+
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       // Authorization: 'my-auth-token'
     }),
   }
-  
+
   private readonly homeUrl = environment.apiUrl;
 
   constructor(private httpClient: HttpClient) { }
 
-  public getAuthors(){
+  public getAuthors() {
     const URL = `${this.homeUrl}authors`;
     return this.httpClient.get<any>(URL, this.httpOptions).pipe(catchError(this.handleError));
   }
 
-  public getAuthor(authorId: number){
+  public getAuthor(authorId: number) {
     const URL = `${this.homeUrl}author` + authorId;
     return this.httpClient.get<any>(URL, this.httpOptions).pipe(catchError(this.handleError));
   }
@@ -41,8 +41,8 @@ export class AuthorService {
     return this.httpClient.put<any>(URL, author, this.httpOptions).pipe(catchError(this.handleError));
   }
 
-  public deleteStudent(authortId: number) {
-    const URL = `${this.homeUrl}authors/` + authortId;
+  public deleteAuthor(authortId: number) {
+    const URL = `${this.homeUrl}author/` + authortId;
     return this.httpClient.delete<any>(URL).pipe(catchError(this.handleError));
   }
 

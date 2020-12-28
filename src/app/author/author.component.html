@@ -1,0 +1,36 @@
+<div>
+    <button type="button" class="btn btn-primary" (click)="addAuthor()">Thêm</button>
+    <table id="customers" style="border-collapse: collapse;">
+        <tr>
+            <th>Id
+                <mat-icon style="cursor: pointer;" (click)="orderBy('authorId', 'asc')">
+                    arrow_downward
+                </mat-icon>
+                <mat-icon style="cursor: pointer;" (click)="orderBy('authorId', 'desc')">
+                    arrow_upward
+                </mat-icon>
+            </th>
+            <th>Tên tác giả
+                <mat-icon style="cursor: pointer;" (click)="orderBy('authorName', 'asc')">
+                    arrow_downward
+                </mat-icon>
+                <mat-icon style="cursor: pointer;" (click)="orderBy('authorName', 'desc')">
+                    arrow_upward
+                </mat-icon>
+            </th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let author of authors">
+            <td>{{ author?.authorId }}</td>
+            <td>{{ author?.authorName }}</td>
+            <td>
+                <mat-icon style="cursor: pointer;" title="Nhấn vào để xóa" (click)="deleteAuthor(author.authorId)">clear
+                </mat-icon>
+                &nbsp;
+                <mat-icon style="cursor: pointer;" title="Nhấn vào để chỉnh sửa" (click)="editAuthor(author.authorId)">
+                    edit
+                </mat-icon>
+            </td>
+        </tr>
+    </table>
+</div>
