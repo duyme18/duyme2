@@ -17,12 +17,19 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { BookComponent } from './book/book.component';
 import { BookFormComponent } from './book-form/book-form.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthorComponent } from './author/author.component';
 import { AuthorFormComponent } from './author-form/author-form.component';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -46,11 +53,18 @@ import { AuthorFormComponent } from './author-form/author-form.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatIconModule,
     BrowserAnimationsModule,
-    MatFormFieldModule
+
+    MatFormFieldModule,
+    MatSliderModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatInputModule,
+    MatButtonModule,
+    MatBadgeModule,
   ],
-  exports: [MatFormFieldModule],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })

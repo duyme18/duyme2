@@ -23,17 +23,16 @@ export class AuthorComponent implements OnInit {
   private loadData() {
     this.authorService.getAuthors().subscribe((data) => {
       this.authors = data;
-      console.log(data);
     });
   }
 
   public addAuthor() {
-    this.router.navigate(['author-form']);
+    this.router.navigate(['author-form', 0]);
   }
 
   public deleteAuthor(authorId: any) {
     this.authorService.deleteAuthor(authorId).subscribe((data) => {
-      this.loadData;
+      this.loadData();
     });
   }
 
@@ -41,7 +40,7 @@ export class AuthorComponent implements OnInit {
     this.router.navigate(['author-form', authorId]);
   }
 
-  public orderBy(key: string, dir: any){
+  public orderBy(key: string, dir: any) {
     this.authors = _.orderBy(this.authors, key, dir);
   }
 }

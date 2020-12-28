@@ -1,1 +1,17 @@
-<p>author-form works!</p>
+<div class="container">
+    <h1>Nhập thêm 1 tác giả mới</h1>
+    <form [formGroup]="authorForm">
+        <mat-form-field class="form-header">
+            <mat-label>Tên tác giả</mat-label>
+            <input matInput placeholder="" formControlName="authorName" require />
+        </mat-form-field>
+        <br />
+        <button type="submit" class="btn btn-success" [disabled]="!authorForm.valid" (click)="saveGoToList()">Thêm và
+            trở về
+            danh sách</button>
+        &nbsp;
+        <button type="submit" class="btn btn-success" [disabled]="!authorForm.valid" (click)="save()">Thêm <span
+                *ngIf="authorId == 0">và nhập
+                mới</span></button>
+    </form>
+</div>

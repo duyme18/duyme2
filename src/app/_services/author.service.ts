@@ -27,12 +27,12 @@ export class AuthorService {
   }
 
   public getAuthor(authorId: number) {
-    const URL = `${this.homeUrl}author` + authorId;
+    const URL = `${this.homeUrl}author/` + authorId;
     return this.httpClient.get<any>(URL, this.httpOptions).pipe(catchError(this.handleError));
   }
 
   public addAuthor(author: Author) {
-    const URL = `${this.homeUrl}authors`;
+    const URL = `${this.homeUrl}author`;
     return this.httpClient.post<any>(URL, author, this.httpOptions).pipe(catchError(this.handleError));
   }
 

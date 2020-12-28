@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthorComponent } from './author/author.component';
+import { AuthorFormComponent } from './author-form/author-form.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'books', component: BookComponent },
   { path: 'book-form', component: BookFormComponent },
   { path: 'authors', component: AuthorComponent },
+  { path: 'author-form/:id', component: AuthorFormComponent },
   { path: '**', component: PageNotFoundComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
