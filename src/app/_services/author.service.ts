@@ -46,6 +46,11 @@ export class AuthorService {
     return this.httpClient.delete<any>(URL).pipe(catchError(this.handleError));
   }
 
+  public getAuthorByAuthorName(authorName: string) {
+    const URL = `${this.homeUrl}author/search/` + authorName;
+    return this.httpClient.post<any>(URL, this.httpOptions).pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

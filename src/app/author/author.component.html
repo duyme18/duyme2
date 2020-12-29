@@ -1,5 +1,12 @@
 <div>
     <button type="button" class="btn btn-primary" (click)="addAuthor()">Thêm</button>
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    <div class="form-inline">
+        <input [(ngModel)]="authorName" class="form-control mr-sm-2" type="search"
+               placeholder="Search by author name"
+               aria-label="Search"
+               (keyup)="getAuthorByAuthorName()">
+      </div>
     <table id="customers" style="border-collapse: collapse;">
         <tr>
             <th>Id

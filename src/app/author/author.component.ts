@@ -12,6 +12,7 @@ import * as _ from 'lodash';
 export class AuthorComponent implements OnInit {
 
   public authors: Author[] = [];
+  public authorName: string = '';
 
   constructor(private authorService: AuthorService,
     private router: Router) { }
@@ -24,6 +25,7 @@ export class AuthorComponent implements OnInit {
     this.authorService.getAuthors().subscribe((data) => {
       this.authors = data;
     });
+
   }
 
   public addAuthor() {
@@ -33,6 +35,12 @@ export class AuthorComponent implements OnInit {
   public deleteAuthor(authorId: any) {
     this.authorService.deleteAuthor(authorId).subscribe((data) => {
       this.loadData();
+    });
+  }
+
+  public getAuthorByAuthorName() {
+    this.authorService.getAuthorByAuthorName(this.authorName).subscribe((data) => {
+        this.authors = data;
     });
   }
 
