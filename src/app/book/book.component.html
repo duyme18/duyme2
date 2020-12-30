@@ -22,11 +22,20 @@
                     arrow_upward
                 </mat-icon>
             </th>
+            <th>Tác giả</th>
+            <th>Người phiên dịch</th>
+            <th>Số lượng</th>
+            <th>Năm xuất bản</th>
+            
             <th></th>
         </tr>
         <tr *ngFor="let book of books">
             <td>{{ book?.bookId }}</td>
             <td>{{ book?.bookName }}</td>
+            <td>{{ book.author?.authorName }}</td>
+            <td>{{ book?.translator }}</td>
+            <td>{{ book?.bookAmount }}</td>
+            <td>{{ book?.publishingYear }}</td>
             <td>
                 <mat-icon style="cursor: pointer;" title="Nhấn vào để xóa" (click)="deleteBook(book.bookId)">clear
                 </mat-icon>

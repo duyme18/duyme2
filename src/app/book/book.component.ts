@@ -4,6 +4,7 @@ import { Author } from '../models/author';
 import { Book } from '../models/book';
 import { BookService } from '../_services/book.service';
 import * as _ from 'lodash';
+import { AuthorService } from '../_services/author.service';
 
 @Component({
   selector: 'duyme2-book',
@@ -13,20 +14,30 @@ import * as _ from 'lodash';
 export class BookComponent implements OnInit {
 
   public books: Book[] = [];
+  public authors: Author[] = [];
   public bookName: string = '';
 
   constructor(
     private bookService: BookService,
+    private authorService: AuthorService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.loadData();
+    this.getAuthors();
   }
 
   private loadData() {
     this.bookService.getBooks().subscribe((data) => {
       console.log(data);
       this.books = data;
+    })
+  }
+
+  private getAuthors(){
+    this.authorService.getAuthors().subscribe((data)=>{
+      this.authors = data;
+      console.log(this.authors);
     })
   }
 
