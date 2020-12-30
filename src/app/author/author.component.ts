@@ -40,7 +40,7 @@ export class AuthorComponent implements OnInit {
 
   public getAuthorByAuthorName() {
     this.authorService.getAuthorByAuthorName(this.authorName).subscribe((data) => {
-        this.authors = data;
+      this.authors = data;
     });
   }
 

@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, tap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
@@ -47,8 +47,11 @@ export class AuthorService {
   }
 
   public getAuthorByAuthorName(authorName: string) {
-    const URL = `${this.homeUrl}author/search/` + authorName;
-    return this.httpClient.post<any>(URL, this.httpOptions).pipe(catchError(this.handleError));
+    const URL = `${this.homeUrl}author/search`;
+    // return this.httpClient.post<any>(URL, this.httpOptions).pipe(catchError(this.handleError));
+    let params = new HttpParams().set('authorName', authorName);
+
+    return this.httpClient.get<any>(URL, { params: params });
   }
 
   private handleError(error: HttpErrorResponse) {
