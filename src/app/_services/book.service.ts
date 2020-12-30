@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -34,7 +34,23 @@ export class BookService {
   public addBook(book: Book) {
     const URL = `${this.homeUrl}books`;
     return this.httpClient.post<any>(URL, book, this.httpOptions).pipe(catchError(this.handleError));
+  }
 
+  public modifyBook(bookId: number, book: Book){
+    const URL = `${this.homeUrl}book/` + bookId;
+    return this.httpClient.put<any>(URL, book, this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  public deleteBook(bookId: number) {
+    const URL = `${this.homeUrl}book/` + bookId;
+    return this.httpClient.delete<any>(URL).pipe(catchError(this.handleError));
+  }
+
+  public getBookByBookName(bookName: string) {
+    const URL = `${this.homeUrl}book/search`;
+    let params = new HttpParams().set('bookName', bookName);
+
+    return this.httpClient.get<any>(URL, { params: params });
   }
 
   private handleError(error: HttpErrorResponse) {

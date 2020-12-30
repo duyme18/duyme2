@@ -15,7 +15,7 @@ export class AuthorFormComponent implements OnInit {
   public authorId = 0;
   public authorForm = new FormGroup({
     authorName: new FormControl('')
-  });
+  }) as any;
 
   constructor(
     private common: CommonService,

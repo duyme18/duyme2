@@ -1,45 +1,40 @@
-<div class="container-fluid">
-    <button mat-raised-button color="primary" (click)="addBook()">
-        <mat-icon>add_box</mat-icon><span>Thêm</span>
-    </button>
-    <div class="row">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-4">
-            <nav class="navbar navbar-light bg-light float-right">
-                <div class="form-inline">
-                    <input class="form-control mr-sm-2" type="search"
-                        placeholder="Search by address" aria-label="Search" >
-                </div>
-                <nav class="navbar navbar-light bg-light float-right">
-                    <div class="form-inline">
-                        <button type="button" class="btn my-2 my-sm-0 border-radius1" data-toggle="modal"
-                            data-target="#exampleModalCenter">More filters
-                        </button>
-                    </div>
-                </nav>
-            </nav>
-        </div>
-        <div class="col-md-3">
-
-        </div>
+<div>
+    <div class="form-inline">
+        <button type="button" class="btn btn-primary" (click)="addBook()">Thêm</button>
+        <input [(ngModel)]="bookName" class="form-control mr-sm-2" type="search" placeholder="Search by book name"
+            aria-label="Search" (keyup)="getBookByBookName()">
     </div>
-
-    <br>
-    <h1 class="text-center">Homes List</h1>
-    <br>
-    <div class="row">
-        <div *ngFor="let book of books; index as idx">
-            <div class="col-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="" width="150px" height="200px" class="card-img-top border-radius" alt="...">
-                    <div class="card-body text-center">
-                        <p class="card-text">{{ book.bookName }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <table id="customers" style="border-collapse: collapse;">
+        <tr>
+            <th>Id
+                <mat-icon style="cursor: pointer;" (click)="orderBy('bookId', 'asc')">
+                    arrow_downward
+                </mat-icon>
+                <mat-icon style="cursor: pointer;" (click)="orderBy('bookId', 'desc')">
+                    arrow_upward
+                </mat-icon>
+            </th>
+            <th>Tên sách
+                <mat-icon style="cursor: pointer;" (click)="orderBy('bookName', 'asc')">
+                    arrow_downward
+                </mat-icon>
+                <mat-icon style="cursor: pointer;" (click)="orderBy('bookName', 'desc')">
+                    arrow_upward
+                </mat-icon>
+            </th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let book of books">
+            <td>{{ book?.bookId }}</td>
+            <td>{{ book?.bookName }}</td>
+            <td>
+                <mat-icon style="cursor: pointer;" title="Nhấn vào để xóa" (click)="deleteBook(book.bookId)">clear
+                </mat-icon>
+                &nbsp;
+                <mat-icon style="cursor: pointer;" title="Nhấn vào để chỉnh sửa" (click)="editBook(book.bookId)">
+                    edit
+                </mat-icon>
+            </td>
+        </tr>
+    </table>
 </div>
