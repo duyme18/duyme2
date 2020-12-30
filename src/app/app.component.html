@@ -14,6 +14,11 @@
       <li class="nav-item">
         <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
       </li>
+      <li class="nav-item">
+        <span *ngIf="totalAuthors > 0" matBadge="{{ totalAuthors }}" matBadgeColor="warn" matBadgeSize="small">
+          Tác giả &nbsp;
+        </span>
+      </li>
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">

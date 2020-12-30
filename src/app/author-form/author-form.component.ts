@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { throwIfEmpty } from 'rxjs/operators';
 import { Author } from '../models/author';
 import { AuthorService } from '../_services/author.service';
+import { CommonService } from '../_services/common.service';
 
 @Component({
   selector: 'duyme2-author-form',
@@ -17,7 +18,9 @@ export class AuthorFormComponent implements OnInit {
     authorName: new FormControl('')
   });
 
-  constructor(private authorService: AuthorService,
+  constructor(
+    private common: CommonService,
+    private authorService: AuthorService,
     private router: Router,
     private route: ActivatedRoute) { }
 
@@ -56,6 +59,7 @@ export class AuthorFormComponent implements OnInit {
       });
     } else {
       this.authorService.addAuthor(this.createNewAuthor()).subscribe((data) => {
+        this.common.incrementTotalAuthors();
         this.authorForm.reset();
       });
     }

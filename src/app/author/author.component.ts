@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Author } from '../models/author';
 import { AuthorService } from '../_services/author.service';
 import * as _ from 'lodash';
+import { CommonService } from '../_services/common.service';
 
 @Component({
   selector: 'duyme2-author',
@@ -14,7 +15,9 @@ export class AuthorComponent implements OnInit {
   public authors: Author[] = [];
   public authorName: string = '';
 
-  constructor(private authorService: AuthorService,
+  constructor(
+    private common: CommonService,
+    private authorService: AuthorService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -24,6 +27,8 @@ export class AuthorComponent implements OnInit {
   private loadData() {
     this.authorService.getAuthors().subscribe((data) => {
       this.authors = data;
+      this.common.setTotalAuthors(data.length);
+      console.log(data.length);
     });
 
   }

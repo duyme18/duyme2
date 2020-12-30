@@ -1,9 +1,9 @@
-<div class="container">
+<!-- <div class="container">
     <h1>Nhập thêm 1 tác giả mới</h1>
     <form [formGroup]="authorForm">
         <mat-form-field class="form-header">
             <mat-label>Tên tác giả</mat-label>
-            <input matInput placeholder="" formControlName="authorName" require />
+            <input matInput placeholder="" formControlName="authorName" />
         </mat-form-field>
         <br />
         <button type="submit" class="btn btn-success" [disabled]="!authorForm.valid" (click)="saveGoToList()">Thêm và
@@ -13,5 +13,26 @@
         <button type="submit" class="btn btn-success" [disabled]="!authorForm.valid" (click)="save()">Thêm <span
                 *ngIf="authorId == 0">và nhập
                 mới</span></button>
+    </form>
+</div> -->
+
+<div class="container">
+    <h2>Nhập thông tin tác giả</h2>
+    <form [formGroup]="authorForm">
+        <div class="form-group">
+            <label for="authorName">Tên tác giả:</label>
+            <input type="text" class="form-control" placeholder="Tên tác giả" id="authorName"
+                formControlName="authorName" required />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success" [disabled]="!authorForm.valid" (click)="saveGoToList()">Thêm
+                và
+                trở về
+                danh sách</button>
+            &nbsp;
+            <button type="submit" class="btn btn-success" [disabled]="!authorForm.valid" (click)="save()">Thêm <span
+                    *ngIf="authorId == 0">và nhập
+                    mới</span></button>
+        </div>
     </form>
 </div>
