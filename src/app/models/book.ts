@@ -6,5 +6,6 @@ export interface Book {
     translator: string;
     bookAmount: string;
     publishingYear: Date;
+    rentConst: string;
     author?: Author;
 }

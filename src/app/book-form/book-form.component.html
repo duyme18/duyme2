@@ -1,26 +1,136 @@
-<div class="container">
-    <h1>Nhập thêm 1 sách mới</h1>
+<!-- <div class="container">
+    <h1>Nhập thông tin sách</h1>
     <form [formGroup]="bookForm">
-        <mat-form-field class="form-header">
-            <mat-label>Tên sách</mat-label>
-            <input matInput placeholder="" formControlName="bookName" require />
-        </mat-form-field>
-        <mat-form-field class="form-header">
-            <mat-label>Người phiên dịch</mat-label>
-            <input matInput placeholder="" formControlName="translator" require />
-        </mat-form-field>
-        <mat-form-field class="form-header">
-            <mat-label>Năm xuất bản</mat-label>
-            <input matInput placeholder="" formControlName="publishingYear" require />
-        </mat-form-field>
-        <br />
-        <button type="submit" class="btn btn-success" [disabled]="!bookForm.valid" (click)="saveGoToList()">Thêm và
-            trở về
-            danh sách</button>
-        &nbsp;
-        <button type="submit" class="btn btn-success" [disabled]="!bookForm.valid" (click)="save()">Thêm <span
-                *ngIf="bookId == 0">và nhập
-                mới</span></button>
-
+        <div class="form-group">
+            <label for="bookForm">Tên sách:</label>
+            <input type="text" class="form-control" placeholder="Tên sách" id="bookName" formControlName="bookName"
+                required />
+            <div *ngIf="bookForm.controls['bookName'].invalid && (bookForm.controls['bookName'].dirty || bookForm.controls['bookName'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="bookForm.controls['bookName'].errors.required">
+                    Bạn phải nhập tên sách!
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="bookForm">Người phiên dịch:</label>
+            <input type="text" class="form-control" placeholder="Người phiên dịch" id="translator"
+                formControlName="translator" required />
+            <div *ngIf="bookForm.controls['translator'].invalid && (bookForm.controls['translator'].dirty || bookForm.controls['translator'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="bookForm.controls['translator'].errors.required">
+                    Bạn phải nhập người phiên dịch!
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="bookForm">Số lượng sách:</label>
+            <input type="text" class="form-control" placeholder="Số lượng sách" id="bookAmount"
+                formControlName="bookAmount" required />
+            <div *ngIf="bookForm.controls['bookAmount'].invalid && (bookForm.controls['bookAmount'].dirty || bookForm.controls['bookAmount'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="bookForm.controls['bookAmount'].errors.required">
+                    Bạn phải nhập số lượng sách!
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="bookForm">Năm xuất bản:</label>
+            <input type="date" class="form-control" placeholder="Năm xuất bản" id="publishingYear"
+                formControlName="publishingYear" required />
+            <div *ngIf="bookForm.controls['publishingYear'].invalid && (bookForm.controls['publishingYear'].dirty || bookForm.controls['publishingYear'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="bookForm.controls['publishingYear'].errors.required">
+                    Bạn phải nhập năm xuất bản
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="bookForm">Tên tác giả:</label>
+            <select type="text" class="form-control" id="authorId" formControlName="authorId" required>
+                <option value="">Chọn tác giả</option>
+                <option *ngFor="let author of authors" value="{{ author.authorId }}">{{ author.authorName }}</option>
+            </select>
+            <div *ngIf="bookForm.controls['authorId'].invalid && (bookForm.controls['authorId'].dirty || bookForm.controls['authorId'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="bookForm.controls['authorId'].errors.required">
+                    Bạn phải nhập tác giả!
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="bookForm">Giá</label>
+            <input type="text" class="form-control" placeholder="Giá" id="rentConst" formControlName="rentConst"
+                required />
+            <div *ngIf="bookForm.controls['rentConst'].invalid && (bookForm.controls['rentConst'].dirty || bookForm.controls['rentConst'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="bookForm.controls['rentConst'].errors.required">
+                    Bạn phải nhập giá
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success" [disabled]="!bookForm.valid" (click)="saveGoToList()">Thêm
+                và
+                trở về
+                danh sách</button>
+            &nbsp;
+            <button type="submit" class="btn btn-success" [disabled]="!bookForm.valid" (click)="save()">Thêm <span
+                    *ngIf="bookId == 0">và nhập
+                    mới</span></button>
+        </div>
     </form>
+    <p>Form value: {{ bookForm.value | json }}</p>
+    <p>Form status: {{ bookForm.status | json }}</p>
+</div> -->
+
+<div class="container">
+    <h1>Nhập thông tin sách</h1>
+    <form [formGroup]="bookForm">
+        <div class="form-group">
+            <label for="bookName">Tên sách:</label>
+            <input type="text" class="form-control" placeholder="Tên sách" id="bookName" formControlName="bookName"
+                required />
+            <div *ngIf="bookForm.bookName?.errors.required">Bạn phải nhập tên sách</div>
+        </div>
+        <div class="form-group">
+            <label for="translator">Nguời phiên dịch:</label>
+            <input type="text" class="form-control" placeholder="Nguời phiên dịch" id="translator"
+                formControlName="translator" required />
+        </div>
+        <div class="form-group">
+            <label for="bookAmount">Số lượng sách:</label>
+            <input type="text" class="form-control" placeholder="Số lượng sách" id="bookAmount"
+                formControlName="bookAmount" required />
+        </div>
+        <div class="form-group">
+            <label for="publishingYear">Năm xuất bản:</label>
+            <input type="date" class="form-control" placeholder="Năm xuất bản" id="publishingYear"
+                formControlName="publishingYear" required />
+        </div>
+        <div class="form-group">
+            <label for="rentConst">Giá sách:</label>
+            <input type="text" class="form-control" placeholder="Giá sách" id="rentConst" formControlName="rentConst"
+                required />
+        </div>
+        <div class="form-group">
+            <label for="authorName">Tên tác giả</label>
+            <select class="form-control" id="authorName" name="authorId" formControlName="authorId">
+                <option *ngFor="let author of authors" value="{{ author.authorId }}">
+                    {{ author.authorName }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success" [disabled]="!bookForm.valid" (click)="saveGoToList()">Thêm
+                và
+                trở về
+                danh sách</button>
+            &nbsp;
+            <button type="submit" class="btn btn-success" [disabled]="!bookForm.valid" (click)="save()">Thêm <span
+                    *ngIf="bookId == 0">và nhập
+                    mới</span></button>
+        </div>
+    </form>
+    <p>Form value: {{ bookForm.value | json }}</p>
+    <p>Form status: {{ bookForm.status | json }}</p>
 </div>

@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'books', component: BookComponent },
-  { path: 'book-form', component: BookFormComponent },
+  { path: 'book-form/:id', component: BookFormComponent },
   { path: 'authors', component: AuthorComponent },
   { path: 'author-form/:id', component: AuthorFormComponent },
   { path: '**', component: PageNotFoundComponent },

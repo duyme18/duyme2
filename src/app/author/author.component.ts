@@ -28,7 +28,6 @@ export class AuthorComponent implements OnInit {
     this.authorService.getAuthors().subscribe((data) => {
       this.authors = data;
       this.common.setTotalAuthors(data.length);
-      console.log(data.length);
     });
 
   }

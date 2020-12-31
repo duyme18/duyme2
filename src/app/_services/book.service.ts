@@ -32,7 +32,7 @@ export class BookService {
   }
 
   public addBook(book: Book) {
-    const URL = `${this.homeUrl}books`;
+    const URL = `${this.homeUrl}book`;
     return this.httpClient.post<any>(URL, book, this.httpOptions).pipe(catchError(this.handleError));
   }
 

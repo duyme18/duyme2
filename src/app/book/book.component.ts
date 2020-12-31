@@ -29,15 +29,13 @@ export class BookComponent implements OnInit {
 
   private loadData() {
     this.bookService.getBooks().subscribe((data) => {
-      console.log(data);
       this.books = data;
     })
   }
 
-  private getAuthors(){
-    this.authorService.getAuthors().subscribe((data)=>{
+  private getAuthors() {
+    this.authorService.getAuthors().subscribe((data) => {
       this.authors = data;
-      console.log(this.authors);
     })
   }
 
