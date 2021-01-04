@@ -53,6 +53,8 @@ export class BookFormComponent implements OnInit {
     this.bookService.getBook(this.bookId).subscribe(next => {
       this.book = next;
       this.bookForm.patchValue(this.book);
+      console.log(this.book?.author?.authorId);
+      console.log(this.book?.author?.authorName);
     }, error => {
       console.log(error);
     });
