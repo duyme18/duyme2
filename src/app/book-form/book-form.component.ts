@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Author } from '../models/author';
 import { Book } from '../models/book';
@@ -15,6 +15,8 @@ export class BookFormComponent implements OnInit {
 
   public bookId = 0;
   public authors: Author[] = [];
+  public authorId = 0;
+  public book?: Book;
   public bookForm = new FormGroup({
     bookName: new FormControl(''),
     translator: new FormControl(''),
@@ -28,6 +30,7 @@ export class BookFormComponent implements OnInit {
     private bookService: BookService,
     private authorService: AuthorService,
     private router: Router,
+    private fb: FormBuilder,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -36,6 +39,23 @@ export class BookFormComponent implements OnInit {
     if (this.bookId > 0) {
       this.loadData(this.bookId);
     }
+
+
+    this.bookForm = this.fb.group({
+      bookName: [''],
+      translator: [''],
+      bookAmount: [''],
+      publishingYear: [''],
+      rentConst: [''],
+      authorId: ['']
+    });
+
+    this.bookService.getBook(this.bookId).subscribe(next => {
+      this.book = next;
+      this.bookForm.patchValue(this.book);
+    }, error => {
+      console.log(error);
+    });
 
     this.getAuthors();
   }
@@ -75,7 +95,6 @@ export class BookFormComponent implements OnInit {
     } else {
       this.bookService.addBook(this.createNewBook()).subscribe((data) => {
         this.bookForm.reset();
-        console.log(data);
       });
     }
   }
