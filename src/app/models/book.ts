@@ -7,5 +7,6 @@ export interface Book {
     bookAmount: string;
     publishingYear: Date;
     rentConst: string;
+    bookDescription: string;
     author?: Author;
 }

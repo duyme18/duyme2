@@ -113,6 +113,11 @@
                 [(ngModel)]="bookForm.rentConst" />
         </div>
         <div class="form-group">
+            <label for="bookForm">Mô tả sản phẩm:</label>
+            <textarea type="text" class="form-control" placeholder="Mô tả sản phẩm" id="bookDescription"
+                formControlName="bookDescription" [(ngModel)]="bookForm.bookDescription"></textarea>
+        </div>
+        <div class="form-group">
             <label for="bookForm">Tên tác giả</label>
             <select class="form-control" id="authorId" name="authorId" formControlName="authorId"
                 [(ngModel)]="authorId">

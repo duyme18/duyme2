@@ -23,6 +23,7 @@ export class BookFormComponent implements OnInit {
     bookAmount: new FormControl(''),
     publishingYear: new FormControl(''),
     rentConst: new FormControl(''),
+    bookDescription: new FormControl(''),
     authorId: new FormControl('')
   }) as any;
 
