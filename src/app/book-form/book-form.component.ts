@@ -30,7 +30,6 @@ export class BookFormComponent implements OnInit {
     private bookService: BookService,
     private authorService: AuthorService,
     private router: Router,
-    private fb: FormBuilder,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -39,25 +38,6 @@ export class BookFormComponent implements OnInit {
     if (this.bookId > 0) {
       this.loadData(this.bookId);
     }
-
-
-    this.bookForm = this.fb.group({
-      bookName: [''],
-      translator: [''],
-      bookAmount: [''],
-      publishingYear: [''],
-      rentConst: [''],
-      authorId: ['']
-    });
-
-    this.bookService.getBook(this.bookId).subscribe(next => {
-      this.book = next;
-      this.bookForm.patchValue(this.book);
-      console.log(this.book?.author?.authorId);
-      console.log(this.book?.author?.authorName);
-    }, error => {
-      console.log(error);
-    });
 
     this.getAuthors();
   }
@@ -69,6 +49,7 @@ export class BookFormComponent implements OnInit {
           this.bookForm.controls[controlName].setValue(data[controlName]);
         }
       }
+      this.authorId = data.author.authorId;
     }));
   }
 

@@ -114,10 +114,10 @@
         </div>
         <div class="form-group">
             <label for="bookForm">Tên tác giả</label>
-            <select class="form-control" id="authorId" formControlName="authorId" [(ngModel)]="bookForm.authorId">
-                <option value="" disabled>Chọn tác giả</option>
-                <option [ngValue]="book?.author?.authorId" selected>{{ book?.author?.authorName }}</option>
-                <option *ngFor="let author of authors" [ngValue]="author.authorId">
+            <select class="form-control" id="authorId" name="authorId" formControlName="authorId"
+                [(ngModel)]="authorId">
+                <option value="" [disabled]="true">Chọn tác giả</option>
+                <option *ngFor="let author of authors" value="{{ author.authorId }}">
                     {{ author.authorName }}</option>
             </select>
         </div>
