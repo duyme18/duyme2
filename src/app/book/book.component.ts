@@ -5,6 +5,7 @@ import { Book } from '../models/book';
 import { BookService } from '../_services/book.service';
 import * as _ from 'lodash';
 import { AuthorService } from '../_services/author.service';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'duyme2-book',
@@ -13,6 +14,12 @@ import { AuthorService } from '../_services/author.service';
 })
 export class BookComponent implements OnInit {
 
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  showModeratorUser = false;
+  username?: string;
   public books: Book[] = [];
   public authors: Author[] = [];
   public bookName: string = '';
@@ -20,10 +27,23 @@ export class BookComponent implements OnInit {
   constructor(
     private bookService: BookService,
     private authorService: AuthorService,
+    private tokenStorageService: TokenStorageService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.getBooks();
+
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+
+      this.username = user.username;
+    }
   }
 
   private getBooks() {

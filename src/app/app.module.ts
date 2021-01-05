@@ -31,6 +31,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatInputModule } from '@angular/material/input';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { HeaderComponent } from './template/header/header.component';
+import { FooterComponent } from './template/footer/footer.component';
+import { CanActivateTeam } from './deactivate/can-activate-team';
+import { NotActivateTeam } from './deactivate/not-activate-team';
+import { IsAdmin } from './deactivate/is-admin';
 
 @NgModule({
   declarations: [
@@ -48,6 +53,8 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     AuthorComponent,
     AuthorFormComponent,
     BookDetailsComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +74,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     MatButtonModule,
     MatBadgeModule,
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders, Permissions, CanActivateTeam, NotActivateTeam, IsAdmin],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

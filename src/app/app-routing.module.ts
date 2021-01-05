@@ -13,6 +13,8 @@ import { RegisterComponent } from './register/register.component';
 import { AuthorComponent } from './author/author.component';
 import { AuthorFormComponent } from './author-form/author-form.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { NotActivateTeam } from './deactivate/not-activate-team';
+import { IsAdmin } from './deactivate/is-admin';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },

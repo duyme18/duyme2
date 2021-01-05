@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthorService } from './_services/author.service';
-import { CommonService } from './_services/common.service';
-import { TokenStorageService } from './_services/token-storage.service';
+import { AuthorService } from 'src/app/_services/author.service';
+import { CommonService } from 'src/app/_services/common.service';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
-  selector: 'duyme2-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'duyme2-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
-export class AppComponent implements OnInit {
+export class HeaderComponent implements OnInit {
   private roles: string[] = [];
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
-  showModeratorUser = false;
   username?: string;
 
   public totalAuthors = 0;
