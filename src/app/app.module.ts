@@ -30,6 +30,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatInputModule } from '@angular/material/input';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { MatInputModule } from '@angular/material/input';
     PageNotFoundComponent,
     AuthorComponent,
     AuthorFormComponent,
+    BookDetailsComponent,
   ],
   imports: [
     BrowserModule,

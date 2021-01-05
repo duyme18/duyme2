@@ -23,11 +23,10 @@ export class BookComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.loadData();
-    this.getAuthors();
+    this.getBooks();
   }
 
-  private loadData() {
+  private getBooks() {
     this.bookService.getBooks().subscribe((data) => {
       this.books = data;
     })
@@ -45,8 +44,12 @@ export class BookComponent implements OnInit {
 
   public deleteBook(bookId: any) {
     this.bookService.deleteBook(bookId).subscribe((data) => {
-      this.loadData();
+      this.getBooks();
     });
+  }
+
+  public showBookDetails(bookId: any) {
+    this.router.navigate(['book-details', bookId]);
   }
 
   public editBook(bookId: any) {

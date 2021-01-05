@@ -33,7 +33,7 @@ export class BookFormComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.bookId = this.route.snapshot.params['id'];
+    this.bookId = this.route.snapshot.params['bookId'];
 
     if (this.bookId > 0) {
       this.loadData(this.bookId);

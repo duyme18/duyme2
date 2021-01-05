@@ -12,6 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthorComponent } from './author/author.component';
 import { AuthorFormComponent } from './author-form/author-form.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'books', component: BookComponent },
-  { path: 'book-form/:id', component: BookFormComponent },
+  { path: 'book-form/:bookId', component: BookFormComponent },
+  { path: 'book-details/:bookId', component: BookDetailsComponent },
   { path: 'authors', component: AuthorComponent },
   { path: 'author-form/:id', component: AuthorFormComponent },
   { path: '**', component: PageNotFoundComponent },
