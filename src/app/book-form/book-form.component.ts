@@ -102,6 +102,7 @@ export class BookFormComponent implements OnInit {
       bookAmount,
       publishingYear,
       rentConst,
+      bookDescription,
       authorId
     } = this.bookForm.value;
 
@@ -111,6 +112,7 @@ export class BookFormComponent implements OnInit {
       bookAmount,
       publishingYear,
       rentConst,
+      bookDescription,
       author: {
         authorId: authorId
       }

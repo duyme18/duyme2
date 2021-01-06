@@ -15,9 +15,7 @@ export class BookDetailsComponent implements OnInit {
   public book?: Book;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private bookService: BookService,
-    private authorService: AuthorService,
-    private router: Router) {
+    private bookService: BookService) {
     this.activatedRoute.params.subscribe(params => {
       this.bookId = params.bookId;
       this.bookName = params.bookName;
