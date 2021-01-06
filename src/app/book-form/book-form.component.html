@@ -121,7 +121,7 @@
             <label for="bookForm">Tên tác giả</label>
             <select class="form-control" id="authorId" name="authorId" formControlName="authorId"
                 [(ngModel)]="authorId">
-                <option value="" [disabled]="true">Chọn tác giả</option>
+                <option value="0" [disabled]="true">Chọn tác giả</option>
                 <option *ngFor="let author of authors" value="{{ author.authorId }}">
                     {{ author.authorName }}</option>
             </select>
