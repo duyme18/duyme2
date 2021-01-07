@@ -2,7 +2,7 @@ import { Book } from "./book";
 import { User } from "./user";
 
 export interface Comment {
-    id: string;
+    commentId: number;
     content?: string;
     commentDate?: Date;
     isEdit?: Boolean;

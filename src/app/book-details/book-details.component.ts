@@ -17,6 +17,7 @@ export class BookDetailsComponent implements OnInit {
   public bookId = 0;
   public bookName = '';
   public book?: Book;
+  public comment?: Comment;
   public comments: Comment[] = [];
   public commentForm = new FormGroup({
     content: new FormControl('')
@@ -25,7 +26,7 @@ export class BookDetailsComponent implements OnInit {
   public tokenJWT: string;
   public userInfo: any;
   public userId: string;
-  commentId?: number;
+  public commentId = 0;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -47,7 +48,7 @@ export class BookDetailsComponent implements OnInit {
     this.userInfo = {
       token: this.token.getToken(),
       username: this.token.getUsername(),
-      role: this.token.getAuthorities()
+      role: this.token.getUser()
     };
 
     console.log(this.userInfo)
@@ -87,7 +88,7 @@ export class BookDetailsComponent implements OnInit {
     })
   }
 
-  updateComment(commentId: string, closeModalRef: HTMLAnchorElement) {
+  updateComment(commentId: number, closeModalRef: HTMLAnchorElement) {
 
     if (this.commentUpdate.value == null) {
       return this.closeForm(closeModalRef);
@@ -114,5 +115,14 @@ export class BookDetailsComponent implements OnInit {
     closeModalRef.click();
     this.getAllCommentByBook();
     this.commentUpdate.reset();
+  }
+
+  deleteComment(closeModalRef2: HTMLButtonElement) {
+    this.commentService.deleteComment(this.commentId).subscribe(result => {
+      this.getAllCommentByBook();
+      closeModalRef2.click();
+    }, error => {
+      console.log(error);
+    });
   }
 }
