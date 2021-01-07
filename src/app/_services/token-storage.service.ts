@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
+const ID_KEY = 'AuthUserId';
+const USERNAME_KEY = 'auth-username';
 const AUTHORITIES_KEY = 'auth-authorities';
 
 @Injectable({
@@ -17,13 +19,13 @@ export class TokenStorageService {
     window.sessionStorage.clear();
   }
 
+  public getToken(): string {
+    return <string>window.sessionStorage.getItem(TOKEN_KEY);
+  }
+
   public saveToken(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
-  }
-
-  public getToken(): string | null {
-    return window.sessionStorage.getItem(TOKEN_KEY);
   }
 
   public saveUser(user: any): void {
@@ -39,19 +41,38 @@ export class TokenStorageService {
     return {};
   }
 
-  public saveAuthorities(authorities: string[]) {
-    window.sessionStorage.removeItem(AUTHORITIES_KEY);
-    window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
+  public getUserId(): string {
+    return <string>sessionStorage.getItem(ID_KEY);
+  }
+
+  public saveUserId(userId: string) {
+    window.sessionStorage.removeItem(ID_KEY);
+    window.sessionStorage.setItem(ID_KEY, userId);
+  }
+
+  public getUsername(): string {
+    return <string>sessionStorage.getItem(USERNAME_KEY);
+  }
+
+  public saveUsername(username: string) {
+    window.sessionStorage.removeItem(USERNAME_KEY);
+    window.sessionStorage.setItem(USERNAME_KEY, username);
   }
 
   public getAuthorities(): string[] {
     this.roles = [];
 
     if (sessionStorage.getItem(TOKEN_KEY)) {
-      JSON.parse(<string> sessionStorage.getItem(AUTHORITIES_KEY)).forEach((authority: { authority: string; }) => {
+      JSON.parse(<string>sessionStorage.getItem(AUTHORITIES_KEY)).forEach((authority: { authority: string; }) => {
         this.roles.push(authority.authority);
       });
     }
     return this.roles;
   }
+
+  public saveAuthorities(authorities: string[]) {
+    window.sessionStorage.removeItem(AUTHORITIES_KEY);
+    window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
+  }
+
 }

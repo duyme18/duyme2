@@ -17,37 +17,37 @@ export class AuthorService {
     }),
   }
 
-  private readonly homeUrl = environment.apiUrl;
+  private readonly apiURL = environment.apiUrl;
 
   constructor(private httpClient: HttpClient) { }
 
   public getAuthors() {
-    const URL = `${this.homeUrl}authors`;
+    const URL = `${this.apiURL}authors`;
     return this.httpClient.get<any>(URL, this.httpOptions).pipe(catchError(this.handleError));
   }
 
   public getAuthor(authorId: number) {
-    const URL = `${this.homeUrl}author/` + authorId;
+    const URL = `${this.apiURL}author/` + authorId;
     return this.httpClient.get<any>(URL, this.httpOptions).pipe(catchError(this.handleError));
   }
 
   public addAuthor(author: Author) {
-    const URL = `${this.homeUrl}author`;
+    const URL = `${this.apiURL}author`;
     return this.httpClient.post<any>(URL, author, this.httpOptions).pipe(catchError(this.handleError));
   }
 
   public modifyAuthor(authorId: number, author: Author) {
-    const URL = `${this.homeUrl}author/` + authorId;
+    const URL = `${this.apiURL}author/` + authorId;
     return this.httpClient.put<any>(URL, author, this.httpOptions).pipe(catchError(this.handleError));
   }
 
   public deleteAuthor(authortId: number) {
-    const URL = `${this.homeUrl}author/` + authortId;
+    const URL = `${this.apiURL}author/` + authortId;
     return this.httpClient.delete<any>(URL).pipe(catchError(this.handleError));
   }
 
   public getAuthorByAuthorName(authorName: string) {
-    const URL = `${this.homeUrl}author/search`;
+    const URL = `${this.apiURL}author/search`;
     // return this.httpClient.post<any>(URL, this.httpOptions).pipe(catchError(this.handleError));
     let params = new HttpParams().set('authorName', authorName);
 

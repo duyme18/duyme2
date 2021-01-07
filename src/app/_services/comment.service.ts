@@ -1,14 +1,15 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Book } from '../models/book';
+import { Comment } from '../models/comment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookService {
+export class CommentService {
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -21,36 +22,24 @@ export class BookService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getBooks() {
-    const URL = `${this.apiURL}books`;
+  public getAllCommentByBook(bookId: number) {
+    const URL = `${this.apiURL}book/comments/` + bookId;
     return this.httpClient.get<any>(URL, this.httpOptions).pipe(catchError(this.handleError));
   }
 
-  public getBook(bookId: number) {
-    const url = `${this.apiURL}book/` + bookId;
-    return this.httpClient.get<any>(url, this.httpOptions).pipe(catchError(this.handleError));
+  public addComment(bookId: number, comment: Comment) {
+    const URL = `${this.apiURL}comment/` + bookId;
+    return this.httpClient.post<any>(URL, comment, this.httpOptions).pipe(catchError(this.handleError));
   }
 
-  public addBook(book: Book) {
-    const URL = `${this.apiURL}book`;
-    return this.httpClient.post<any>(URL, book, this.httpOptions).pipe(catchError(this.handleError));
-  }
-
-  public modifyBook(bookId: number, book: Book){
-    const URL = `${this.apiURL}book/` + bookId;
-    return this.httpClient.put<any>(URL, book, this.httpOptions).pipe(catchError(this.handleError));
-  }
-
-  public deleteBook(bookId: number) {
-    const URL = `${this.apiURL}book/` + bookId;
+  public deleteComment(commentId: number) {
+    const URL = `${this.apiURL}comment/` + commentId;
     return this.httpClient.delete<any>(URL).pipe(catchError(this.handleError));
   }
 
-  public getBookByBookName(bookName: string) {
-    const URL = `${this.apiURL}book/search`;
-    let params = new HttpParams().set('bookName', bookName);
-
-    return this.httpClient.get<any>(URL, { params: params });
+  public modifyComment(commentId: number) {
+    const URL = `${this.apiURL}comment/` + commentId;
+    return this.httpClient.put<any>(URL, this.httpOptions).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
