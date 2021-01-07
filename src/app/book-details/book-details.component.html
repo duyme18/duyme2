@@ -26,7 +26,7 @@
         </tr>
     </thead>
 </table>
-234
+
 <!-- Comments Form -->
 <div class="card my-4">
     <h5 class="card-header">Leave a Comment:</h5>
@@ -61,27 +61,22 @@
         </p>
         <div class="text-left" *ngIf="this.userId == comment.user?.id">
             <!--              edit/delete-->
-            <a #closeModalRef class="btn btn-primary a-btn-slide-text" data-toggle="collapse"
-                [attr.data-target]="'#collapseExample' + i" aria-expanded="false">
+            <a #closeModalRef class="btn btn-primary a-btn-slide-text" data-toggle="collapse" [attr.data-target]="'#collapseExample' + i" aria-expanded="false">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                 <span><strong class="pointer">Edit</strong></span>
             </a>
-            <a (click)="getCommentId(comment.commentId)" class="btn btn-warning a-btn-slide-text" data-toggle="modal"
-                data-target="#exampleModalCenter">
+            <a (click)="getCommentId(comment.commentId)" class="btn btn-warning a-btn-slide-text" data-toggle="modal" data-target="#exampleModalCenter">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                 <span><strong class="pointer">Delete</strong></span>
             </a>
             <div class="collapse" [id]="'collapseExample'+i">
                 <form>
                     <div class="card card-body">
-                        <textarea contenteditable="true" [formControl]="commentUpdate" [value]="comment.content"
-                            rows="3"></textarea>
+                        <textarea contenteditable="true" [formControl]="commentUpdate" [value]="comment.content" rows="3"></textarea>
                         <br />
                         <div class="text-right">
-                            <button class="btn btn-outline-secondary"
-                                (click)="closeForm(closeModalRef)">Close</button>&nbsp;&nbsp;
-                            <button class="btn btn-outline-primary"
-                                (click)="updateComment(comment.commentId, closeModalRef)">Update
+                            <button class="btn btn-outline-secondary" (click)="closeForm(closeModalRef)">Close</button>&nbsp;&nbsp;
+                            <button class="btn btn-outline-primary" (click)="updateComment(comment.commentId, closeModalRef)">Update
                             </button>
                         </div>
                     </div>
@@ -90,23 +85,22 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-       aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title text-danger" id="exampleModalCenterTitle">Delete Comment!</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger" id="exampleModalCenterTitle">Delete Comment!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
+            </div>
+            <div class="modal-body text-dark text-center">
+                <h5>Are you sure?</h5>
+            </div>
+            <div class="modal-footer">
+                <button #closeModalRef2 type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" (click)="deleteComment(closeModalRef2)">Accept</button>
+            </div>
         </div>
-        <div class="modal-body text-dark text-center">
-          <h5>Are you sure?</h5>
-        </div>
-        <div class="modal-footer">
-          <button #closeModalRef2 type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger" (click)="deleteComment(closeModalRef2)">Accept</button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>

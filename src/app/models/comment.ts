@@ -1,5 +1,5 @@
-import { Book } from "./book";
-import { User } from "./user";
+import { User } from './user';
+import { Book } from './book';
 
 export interface Comment {
     commentId: number;

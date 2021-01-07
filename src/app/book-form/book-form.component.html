@@ -89,38 +89,31 @@
     <form [formGroup]="bookForm">
         <div class="form-group">
             <label for="bookForm">Tên sách:</label>
-            <input type="text" class="form-control" placeholder="Tên sách" id="bookName" formControlName="bookName"
-                [(ngModel)]="bookForm.bookName" />
+            <input type="text" class="form-control" placeholder="Tên sách" id="bookName" formControlName="bookName" [(ngModel)]="bookForm.bookName" />
         </div>
         <div class="form-group">
             <label for="bookForm">Nguời phiên dịch:</label>
-            <input type="text" class="form-control" placeholder="Nguời phiên dịch" id="translator"
-                formControlName="translator" [(ngModel)]="bookForm.translator" />
+            <input type="text" class="form-control" placeholder="Nguời phiên dịch" id="translator" formControlName="translator" [(ngModel)]="bookForm.translator" />
         </div>
         <div class="form-group">
             <label for="bookForm">Số lượng sách:</label>
-            <input type="text" class="form-control" placeholder="Số lượng sách" id="bookAmount"
-                formControlName="bookAmount" [(ngModel)]="bookForm.bookAmount" />
+            <input type="text" class="form-control" placeholder="Số lượng sách" id="bookAmount" formControlName="bookAmount" [(ngModel)]="bookForm.bookAmount" />
         </div>
         <div class="form-group">
             <label for="bookForm">Năm xuất bản:</label>
-            <input type="date" class="form-control" placeholder="Năm xuất bản" id="publishingYear"
-                formControlName="publishingYear" [(ngModel)]="bookForm.publishingYear" />
+            <input type="date" class="form-control" placeholder="Năm xuất bản" id="publishingYear" formControlName="publishingYear" [(ngModel)]="bookForm.publishingYear" />
         </div>
         <div class="form-group">
             <label for="bookForm">Giá sách:</label>
-            <input type="text" class="form-control" placeholder="Giá sách" id="rentConst" formControlName="rentConst"
-                [(ngModel)]="bookForm.rentConst" />
+            <input type="text" class="form-control" placeholder="Giá sách" id="rentConst" formControlName="rentConst" [(ngModel)]="bookForm.rentConst" />
         </div>
         <div class="form-group">
             <label for="bookForm">Mô tả sản phẩm:</label>
-            <textarea type="text" class="form-control" placeholder="Mô tả sản phẩm" id="bookDescription"
-                formControlName="bookDescription" [(ngModel)]="bookForm.bookDescription"></textarea>
+            <textarea type="text" class="form-control" placeholder="Mô tả sản phẩm" id="bookDescription" formControlName="bookDescription" [(ngModel)]="bookForm.bookDescription"></textarea>
         </div>
         <div class="form-group">
             <label for="bookForm">Tên tác giả</label>
-            <select class="form-control" id="authorId" name="authorId" formControlName="authorId"
-                [(ngModel)]="authorId">
+            <select class="form-control" id="authorId" name="authorId" formControlName="authorId" [(ngModel)]="authorId">
                 <option value="0" [disabled]="true">Chọn tác giả</option>
                 <option *ngFor="let author of authors" value="{{ author.authorId }}">
                     {{ author.authorName }}</option>
@@ -130,8 +123,7 @@
             <button type="submit" class="btn btn-success" [disabled]="!bookForm.valid" (click)="saveGoToList()">Thêm
                 và
                 trở về
-                danh sách</button>
-            &nbsp;
+                danh sách</button> &nbsp;
             <button type="submit" class="btn btn-success" [disabled]="!bookForm.valid" (click)="save()">Thêm <span
                     *ngIf="bookId == 0">và nhập
                     mới</span></button>

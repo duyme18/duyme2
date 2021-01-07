@@ -3,7 +3,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from '../models/book';
 import { Comment } from '../models/comment';
-import { AuthorService } from '../_services/author.service';
 import { BookService } from '../_services/book.service';
 import { CommentService } from '../_services/comment.service';
 import { TokenStorageService } from '../_services/token-storage.service';
