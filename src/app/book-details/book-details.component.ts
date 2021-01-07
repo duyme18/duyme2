@@ -25,7 +25,7 @@ export class BookDetailsComponent implements OnInit {
   public tokenJWT: string;
   public userInfo: any;
   public userId: string;
-  idComment?: string;
+  commentId?: number;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -43,7 +43,6 @@ export class BookDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getBook();
     this.getAllCommentByBook();
-    console.log(this.bookId, this.token.getUsername());
 
     this.userInfo = {
       token: this.token.getToken(),
@@ -95,7 +94,7 @@ export class BookDetailsComponent implements OnInit {
     }
 
     const comment: any = {
-      id: commentId,
+      commentId: commentId,
       comment: this.commentUpdate.value
     };
 
@@ -107,8 +106,8 @@ export class BookDetailsComponent implements OnInit {
     console.log(comment);
   }
 
-  getIdComment(id: string) {
-    this.idComment = id;
+  getCommentId(id: number) {
+    this.commentId = id;
   }
 
   closeForm(closeModalRef: HTMLAnchorElement) {

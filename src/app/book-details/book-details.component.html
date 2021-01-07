@@ -53,7 +53,8 @@
 <div class="media mb-4" *ngFor="let comment of comments , index as i">
     <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
     <div class="media-body">
-        <label class="text-success">@{{ comment.user?.username }}<h6 class="text-secondary">{{ comment.commentDate }}</h6>
+        <label class="text-success">@{{ comment.user?.username }}<h6 class="text-secondary">{{ comment.commentDate }}
+            </h6>
         </label>
         <p>
             {{comment.content}}
@@ -65,7 +66,7 @@
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                 <span><strong class="pointer">Edit</strong></span>
             </a>
-            <a (click)="getIdComment(comment.id)" class="btn btn-warning a-btn-slide-text" data-toggle="modal"
+            <a (click)="getCommentId(comment.commentId)" class="btn btn-warning a-btn-slide-text" data-toggle="modal"
                 data-target="#exampleModalCenter">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                 <span><strong class="pointer">Delete</strong></span>
@@ -80,7 +81,7 @@
                             <button class="btn btn-outline-secondary"
                                 (click)="closeForm(closeModalRef)">Close</button>&nbsp;&nbsp;
                             <button class="btn btn-outline-primary"
-                                (click)="updateComment(comment.id,closeModalRef)">Update
+                                (click)="updateComment(comment.commentId, closeModalRef)">Update
                             </button>
                         </div>
                     </div>
