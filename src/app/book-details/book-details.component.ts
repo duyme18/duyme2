@@ -50,7 +50,6 @@ export class BookDetailsComponent implements OnInit {
       role: this.token.getUser()
     };
 
-    console.log(this.userInfo)
   }
 
   private getBook() {
@@ -80,7 +79,7 @@ export class BookDetailsComponent implements OnInit {
         id: this.token.getUserId()
       }
     }
-    console.log(comment);
+
     this.commentService.addComment(this.bookId, comment).subscribe((result) => {
       this.commentForm.reset();
       this.getAllCommentByBook();
@@ -95,7 +94,7 @@ export class BookDetailsComponent implements OnInit {
 
     const comment: any = {
       commentId: commentId,
-      comment: this.commentUpdate.value
+      content: this.commentUpdate.value
     };
 
     this.commentService.modifyComment(comment).subscribe(result => {
@@ -103,7 +102,6 @@ export class BookDetailsComponent implements OnInit {
     }, error => {
       console.log(error);
     });
-    console.log(comment);
   }
 
   getCommentId(id: number) {

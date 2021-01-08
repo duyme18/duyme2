@@ -28,8 +28,11 @@
 </table>
 
 <!-- Comments Form -->
+<h2>
+    KHÁCH HÀNG NHẬN XÉT
+</h2>
 <div class="card my-4">
-    <h5 class="card-header">Leave a Comment:</h5>
+    <h1 class="card-header">Đánh giá</h1>
     <div class="card-body">
         <form [formGroup]="commentForm">
             <div class="form-group">
@@ -41,7 +44,7 @@
                 </div>
                 <ng-template #other>
                     <div class="text-center text-secondary">
-                        <h6>You need login before can be comment. <a [routerLink]="'/login'">Login!</a></h6>
+                        <h6>Bạn cần đăng nhập để  <a [routerLink]="'/login'">Login!</a></h6>
                     </div>
                 </ng-template>
             </div>
@@ -63,11 +66,11 @@
             <!--              edit/delete-->
             <a #closeModalRef class="btn btn-primary a-btn-slide-text" data-toggle="collapse" [attr.data-target]="'#collapseExample' + i" aria-expanded="false">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                <span><strong class="pointer">Edit</strong></span>
+                <span><strong class="pointer">Sửa</strong></span>
             </a>
             <a (click)="getCommentId(comment.commentId)" class="btn btn-warning a-btn-slide-text" data-toggle="modal" data-target="#exampleModalCenter">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                <span><strong class="pointer">Delete</strong></span>
+                <span><strong class="pointer">Xóa</strong></span>
             </a>
             <div class="collapse" [id]="'collapseExample'+i">
                 <form>
@@ -75,8 +78,8 @@
                         <textarea contenteditable="true" [formControl]="commentUpdate" [value]="comment.content" rows="3"></textarea>
                         <br />
                         <div class="text-right">
-                            <button class="btn btn-outline-secondary" (click)="closeForm(closeModalRef)">Close</button>&nbsp;&nbsp;
-                            <button class="btn btn-outline-primary" (click)="updateComment(comment.commentId, closeModalRef)">Update
+                            <button class="btn btn-outline-secondary" (click)="closeForm(closeModalRef)">Đóng</button>&nbsp;&nbsp;
+                            <button class="btn btn-outline-primary" (click)="updateComment(comment.commentId, closeModalRef)">Cập nhật
                             </button>
                         </div>
                     </div>
@@ -89,7 +92,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-danger" id="exampleModalCenterTitle">Delete Comment!</h5>
+                <h5 class="modal-title text-danger" id="exampleModalCenterTitle">Xóa bình luận</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -99,7 +102,7 @@
             </div>
             <div class="modal-footer">
                 <button #closeModalRef2 type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" (click)="deleteComment(closeModalRef2)">Accept</button>
+                <button type="button" class="btn btn-danger" (click)="deleteComment(closeModalRef2)">Xóa</button>
             </div>
         </div>
     </div>

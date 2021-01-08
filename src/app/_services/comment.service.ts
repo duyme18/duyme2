@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { Book } from '../models/book';
 import { Comment } from '../models/comment';
 
 @Injectable({
@@ -37,9 +36,9 @@ export class CommentService {
     return this.httpClient.delete<any>(URL).pipe(catchError(this.handleError));
   }
 
-  public modifyComment(commentId: number) {
-    const URL = `${this.apiURL}comment/` + commentId;
-    return this.httpClient.put<any>(URL, this.httpOptions).pipe(catchError(this.handleError));
+  public modifyComment(comment: Comment) {
+    const URL = `${this.apiURL}comment/` + comment.commentId;
+    return this.httpClient.put<any>(URL, comment, this.httpOptions).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
