@@ -52,12 +52,11 @@ export class BookDetailsComponent implements OnInit {
       this.totalComments = total;
     });
 
-    if (this.common.totalComments === 0) {
-      this.commentService.getAllCommentByBook(this.bookId).subscribe((data) => {
-        this.common.setTotalComments(data.length);
 
-      });
-    }
+    this.commentService.getAllCommentByBook(this.bookId).subscribe((data) => {
+      this.common.setTotalComments(data.length);
+    });
+
 
     this.userInfo = {
       token: this.token.getToken(),

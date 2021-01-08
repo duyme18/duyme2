@@ -70,7 +70,7 @@ export class BookComponent implements OnInit {
 
   public showBookDetails(bookId: any) {
     this.router.navigate(['book-details', bookId]);
-  }
+  } 
 
   public editBook(bookId: any) {
     this.router.navigate(['book-form', bookId]);
