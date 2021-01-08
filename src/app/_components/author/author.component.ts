@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Author } from '../models/author';
-import { AuthorService } from '../_services/author.service';
+import { Author } from '../../models/author';
+import { AuthorService } from '../../_services/author.service';
 import * as _ from 'lodash';
-import { CommonService } from '../_services/common.service';
+import { CommonService } from '../../_services/common.service';
 
 @Component({
   selector: 'duyme2-author',

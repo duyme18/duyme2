@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BoardAdminComponent } from './board-admin/board-admin.component';
-import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
-import { BoardUserComponent } from './board-user/board-user.component';
-import { BookFormComponent } from './book-form/book-form.component';
-import { BookComponent } from './book/book.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RegisterComponent } from './register/register.component';
-import { AuthorComponent } from './author/author.component';
-import { AuthorFormComponent } from './author-form/author-form.component';
-import { BookDetailsComponent } from './book-details/book-details.component';
+import { BoardAdminComponent } from './_components/board-admin/board-admin.component';
+import { BoardModeratorComponent } from './_components/board-moderator/board-moderator.component';
+import { BoardUserComponent } from './_components/board-user/board-user.component';
+import { BookFormComponent } from './_components/book-form/book-form.component';
+import { BookComponent } from './_components/book/book.component';
+import { HomeComponent } from './_components/home/home.component';
+import { LoginComponent } from './_components/login/login.component';
+import { PageNotFoundComponent } from './_components/page-not-found/page-not-found.component';
+import { ProfileComponent } from './_components/profile/profile.component';
+import { RegisterComponent } from './_components/register/register.component';
+import { AuthorComponent } from './_components/author/author.component';
+import { AuthorFormComponent } from './_components/author-form/author-form.component';
+import { BookDetailsComponent } from './_components/book-details/book-details.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },

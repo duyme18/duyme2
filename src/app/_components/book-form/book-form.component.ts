@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Author } from '../models/author';
-import { Book } from '../models/book';
-import { AuthorService } from '../_services/author.service';
-import { BookService } from '../_services/book.service';
+import { Author } from '../../models/author';
+import { Book } from '../../models/book';
+import { AuthorService } from '../../_services/author.service';
+import { BookService } from '../../_services/book.service';
 
 @Component({
   selector: 'duyme2-book-form',

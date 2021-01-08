@@ -1,7 +1,7 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UploadFileService } from '../_services/upload-file.service';
+import { UploadFileService } from '../../_services/upload-file.service';
 
 @Component({
   selector: 'duyme2-upload-files',

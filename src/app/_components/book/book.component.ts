@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Author } from '../models/author';
-import { Book } from '../models/book';
-import { BookService } from '../_services/book.service';
+import { Author } from '../../models/author';
+import { Book } from '../../models/book';
+import { BookService } from '../../_services/book.service';
 import * as _ from 'lodash';
-import { AuthorService } from '../_services/author.service';
-import { TokenStorageService } from '../_services/token-storage.service';
+import { AuthorService } from '../../_services/author.service';
+import { TokenStorageService } from '../../_services/token-storage.service';
 
 @Component({
   selector: 'duyme2-book',

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Author } from '../models/author';
-import { AuthorService } from '../_services/author.service';
-import { CommonService } from '../_services/common.service';
+import { Author } from '../../models/author';
+import { AuthorService } from '../../_services/author.service';
+import { CommonService } from '../../_services/common.service';
 
 @Component({
   selector: 'duyme2-author-form',
