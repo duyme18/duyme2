@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from 'src/app/_services/common.service';
 import { Book } from '../../models/book';
 import { Comment } from '../../models/comment';
 import { BookService } from '../../_services/book.service';
@@ -26,11 +27,14 @@ export class BookDetailsComponent implements OnInit {
   public userInfo: any;
   public userId: string;
   public commentId = 0;
+  public totalComments = 0;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private commentService: CommentService,
+    private common: CommonService,
     private token: TokenStorageService,
+    private router: Router,
     private bookService: BookService) {
     this.activatedRoute.params.subscribe(params => {
       this.bookId = params.bookId;
@@ -43,6 +47,17 @@ export class BookDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getBook();
     this.getAllCommentByBook();
+
+    this.common.totalComments$.subscribe((total) => {
+      this.totalComments = total;
+    });
+
+    if (this.common.totalComments === 0) {
+      this.commentService.getAllCommentByBook(this.bookId).subscribe((data) => {
+        this.common.setTotalComments(data.length);
+
+      });
+    }
 
     this.userInfo = {
       token: this.token.getToken(),
@@ -81,6 +96,7 @@ export class BookDetailsComponent implements OnInit {
     }
 
     this.commentService.addComment(this.bookId, comment).subscribe((result) => {
+      this.common.incrementTotalComments();
       this.commentForm.reset();
       this.getAllCommentByBook();
     })
@@ -121,5 +137,9 @@ export class BookDetailsComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
+
+  reloadPage(): void {
+    window.location.reload();
   }
 }
