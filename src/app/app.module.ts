@@ -1,3 +1,4 @@
+import { UploadFilesComponent } from './_components/upload-files/upload-files.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -55,6 +56,7 @@ import { IsAdmin } from './deactivate/is-admin';
     BookDetailsComponent,
     HeaderComponent,
     FooterComponent,
+    UploadFilesComponent
   ],
   imports: [
     BrowserModule,

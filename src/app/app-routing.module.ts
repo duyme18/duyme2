@@ -1,3 +1,4 @@
+import { UploadFilesComponent } from './_components/upload-files/upload-files.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BoardAdminComponent } from './_components/board-admin/board-admin.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'book-details/:bookId', component: BookDetailsComponent },
   { path: 'authors', component: AuthorComponent },
   { path: 'author-form/:id', component: AuthorFormComponent },
+  { path: 'upload-files', component: UploadFilesComponent },
   { path: '**', component: PageNotFoundComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
