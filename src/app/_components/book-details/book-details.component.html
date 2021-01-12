@@ -24,6 +24,11 @@
             <th scope="col">Mô tả sản phẩm</th>
             <th scope="col">{{ book.bookDescription }}</th>
         </tr>
+        <tr>
+            <th scope="col">Ảnh sản phẩm</th>
+            <th scope="col"><img *ngFor='let url of files' [src]="url.data" height="150" width="200px"
+                    style="margin: 3px;"> <br /></th>
+        </tr>
     </thead>
 </table>
 
@@ -45,7 +50,8 @@
                         </span><span class="glyphicon glyphicon-star-empty"></span>
                     </div>
                     <div>
-                        <span class="glyphicon glyphicon-user" *ngIf="totalComments > 0" >{{ totalComments }} đánh giá</span>
+                        <span class="glyphicon glyphicon-user" *ngIf="totalComments > 0">{{ totalComments }} đánh
+                            giá</span>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-6">

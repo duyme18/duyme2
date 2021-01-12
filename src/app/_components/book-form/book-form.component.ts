@@ -17,6 +17,7 @@ export class BookFormComponent implements OnInit {
   public authors: Author[] = [];
   public authorId = 0;
   public book?: Book;
+  public images = [];
   public bookForm = new FormGroup({
     bookName: new FormControl(''),
     translator: new FormControl(''),
@@ -90,7 +91,8 @@ export class BookFormComponent implements OnInit {
       });
     } else {
       this.bookService.addBook(this.createNewBook()).subscribe((data) => {
-        this.router.navigate(['books']);
+        this.bookId = data.bookId;
+        this.router.navigate(['upload-files', this.bookId]);
       });
     }
   }
@@ -126,4 +128,23 @@ export class BookFormComponent implements OnInit {
 
   }
 
+  onFileChange(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var filesAmount = event.target.files.length;
+      for (let i = 0; i < filesAmount; i++) {
+        var reader = new FileReader();
+
+        reader.onload = (event: any) => {
+          // @ts-ignore
+          this.images.push(event.target.result);
+
+          this.bookForm.patchValue({
+            fileSource: this.images
+          });
+        }
+
+        reader.readAsDataURL(event.target.files[i]);
+      }
+    }
+  }
 }

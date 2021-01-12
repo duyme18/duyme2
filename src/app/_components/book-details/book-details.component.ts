@@ -1,3 +1,4 @@
+import { IFile } from './../../models/file';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,6 +8,8 @@ import { Comment } from '../../models/comment';
 import { BookService } from '../../_services/book.service';
 import { CommentService } from '../../_services/comment.service';
 import { TokenStorageService } from '../../_services/token-storage.service';
+import { UploadFilesComponent } from '../upload-files/upload-files.component';
+import { UploadFileService } from 'src/app/_services/upload-file.service';
 
 @Component({
   selector: 'duyme2-book-details',
@@ -19,6 +22,8 @@ export class BookDetailsComponent implements OnInit {
   public book?: Book;
   public comment?: Comment;
   public comments: Comment[] = [];
+  public files: IFile[] = [];
+  public datas = [];
   public commentForm = new FormGroup({
     content: new FormControl('')
   });
@@ -34,7 +39,7 @@ export class BookDetailsComponent implements OnInit {
     private commentService: CommentService,
     private common: CommonService,
     private token: TokenStorageService,
-    private router: Router,
+    private uploadService : UploadFileService,
     private bookService: BookService) {
     this.activatedRoute.params.subscribe(params => {
       this.bookId = params.bookId;
@@ -57,24 +62,31 @@ export class BookDetailsComponent implements OnInit {
       this.common.setTotalComments(data.length);
     });
 
-
     this.userInfo = {
       token: this.token.getToken(),
       username: this.token.getUsername(),
       role: this.token.getUser()
     };
 
+    this.getAllFilesByBook();
   }
 
   private getBook() {
     this.bookService.getBook(this.bookId).subscribe((data) => {
       this.book = data;
+    
     });
   }
 
   private getAllCommentByBook() {
     this.commentService.getAllCommentByBook(this.bookId).subscribe((data) => {
       this.comments = data;
+    });
+  }
+  
+  private getAllFilesByBook() {
+    this.uploadService.getFilesByBook(this.bookId).subscribe((data) => {
+      this.files = data;
     });
   }
 
@@ -138,7 +150,4 @@ export class BookDetailsComponent implements OnInit {
     });
   }
 
-  reloadPage(): void {
-    window.location.reload();
-  }
 }

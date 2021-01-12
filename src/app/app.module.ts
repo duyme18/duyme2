@@ -38,6 +38,14 @@ import { CanActivateTeam } from './deactivate/can-activate-team';
 import { NotActivateTeam } from './deactivate/not-activate-team';
 import { IsAdmin } from './deactivate/is-admin';
 
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +64,7 @@ import { IsAdmin } from './deactivate/is-admin';
     BookDetailsComponent,
     HeaderComponent,
     FooterComponent,
-    UploadFilesComponent
+    UploadFilesComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +83,13 @@ import { IsAdmin } from './deactivate/is-admin';
     MatInputModule,
     MatButtonModule,
     MatBadgeModule,
+
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+
   ],
   providers: [authInterceptorProviders, Permissions, CanActivateTeam, NotActivateTeam, IsAdmin],
   bootstrap: [AppComponent]
