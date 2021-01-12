@@ -85,7 +85,7 @@ export class UploadFilesComponent implements OnInit {
       },
       err => {
         this.progress = 0;
-        this.message = 'Could not upload the file!';
+        this.message = 'Không thể tải được file!';
         this.currentFile = undefined;
       });
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Author } from '../../models/author';
 import { AuthorService } from '../../_services/author.service';
@@ -13,8 +13,9 @@ import { CommonService } from '../../_services/common.service';
 export class AuthorFormComponent implements OnInit {
 
   public authorId = 0;
+  isSubmitted = false;
   public authorForm = new FormGroup({
-    authorName: new FormControl('')
+    authorName: new FormControl('', [Validators.required])
   }) as any;
 
   constructor(
@@ -29,6 +30,10 @@ export class AuthorFormComponent implements OnInit {
     if (this.authorId > 0) {
       this.loadData(this.authorId);
     }
+  }
+
+  get f() {
+    return this.authorForm.controls;
   }
 
   private loadData(authorId: number) {
@@ -53,15 +58,25 @@ export class AuthorFormComponent implements OnInit {
   }
 
   public save() {
+    this.isSubmitted = true;
+    if (this.authorForm.invalid) {
+      return;
+    }
     if (this.authorId > 0) {
       this.authorService.modifyAuthor(this.authorId, this.createNewAuthor()).subscribe((data) => {
+        alert('Sửa thành công!');
       });
     } else {
       this.authorService.addAuthor(this.createNewAuthor()).subscribe((data) => {
+        alert('Thêm thành công!');
         this.common.incrementTotalAuthors();
         this.authorForm.reset();
       });
     }
+  }
+
+  public backToList() {
+    this.router.navigate(['authors']);
   }
 
   public saveGoToList() {

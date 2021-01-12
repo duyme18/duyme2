@@ -18,28 +18,24 @@
 
 <div class="container">
     <h2>Nhập thông tin tác giả</h2>
-    <form [formGroup]="authorForm">
+    <form [formGroup]="authorForm" (ngSubmit)="save()">
         <div class="form-group">
-            <label for="authorName">Tên tác giả:</label>
-            <input type="text" class="form-control" placeholder="Tên tác giả" id="authorName"
-                formControlName="authorName" required />
-            <div *ngIf="authorForm.controls['authorName'].invalid && (authorForm.controls['authorName'].dirty || authorForm.controls['authorName'].touched)"
-                class="alert alert-danger">
-                <div *ngIf="authorForm.controls['authorName'].errors.required">
-                    Bạn phải nhập tên tác giả!
-                </div>
+            <label for="authorName">Tên tác giả</label>
+            <input type="text" class="form-control" placeholder="Tên tác giả" id="authorName" formControlName="authorName" />
+            <div *ngIf="f.authorName.touched && f.authorName.invalid" class="alert alert-danger">
+                <div *ngIf="f.authorName.errors.required">Tên không được để trống.</div>
             </div>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-success" [disabled]="!authorForm.valid" (click)="saveGoToList()">Thêm
+            <button class="btn btn-primary" type="submit">Thêm</button>
+        </div>
+        <!-- <button type="submit" class="btn btn-success" [disabled]="!authorForm.valid" (click)="saveGoToList()">Thêm
                 và
                 trở về
-                danh sách</button>
-            &nbsp;
+                danh sách</button> &nbsp;
             <button type="submit" class="btn btn-success" [disabled]="!authorForm.valid" (click)="save()">Thêm <span
                     *ngIf="authorId == 0">và nhập
-                    mới</span></button>
-        </div>
+                    mới</span></button> -->
     </form>
     <p>Form value: {{ authorForm.value | json }}</p>
     <p>Form status: {{ authorForm.status | json }}</p>
