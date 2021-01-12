@@ -37,6 +37,7 @@ import { FooterComponent } from './template/footer/footer.component';
 import { CanActivateTeam } from './deactivate/can-activate-team';
 import { NotActivateTeam } from './deactivate/not-activate-team';
 import { IsAdmin } from './deactivate/is-admin';
+import { SidebarComponent } from './template/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { IsAdmin } from './deactivate/is-admin';
     HeaderComponent,
     FooterComponent,
     UploadFilesComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
