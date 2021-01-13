@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
+  showModeratorUser = false;
   username?: string;
 
   public totalAuthors = 0;

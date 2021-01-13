@@ -1,6 +1,6 @@
 import { UploadFilesComponent } from './_components/upload-files/upload-files.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -80,6 +80,9 @@ import { SidebarComponent } from './template/sidebar/sidebar.component';
 
   ],
   providers: [authInterceptorProviders, Permissions, CanActivateTeam, NotActivateTeam, IsAdmin],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
 })
 export class AppModule { }

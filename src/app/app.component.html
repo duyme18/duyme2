@@ -1,5 +1,12 @@
-<div id="app">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
+<div class="sidenav">
+    <a href="#about">Quản lý thủ thư</a>
+    <a href="/books">Sách</a>
+    <a href="/books">Sách</a>
+    <a href="/authors">Tác giả</a>
+    <a href="#contact">Contact</a>
+</div>
+<div class="main">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a href="#" class="navbar-brand">HDD</a>
         <ul class="navbar-nav mr-auto" routerLinkActive="active">
             <li class="nav-item">
@@ -19,8 +26,8 @@
             </li>
             <li class="nav-item">
                 <span *ngIf="totalAuthors > 0" matBadge="{{ totalAuthors }}" matBadgeColor="warn" matBadgeSize="small">
-          Tác giả &nbsp;
-        </span>
+                    Tác giả &nbsp;
+                </span>
             </li>
         </ul>
 
